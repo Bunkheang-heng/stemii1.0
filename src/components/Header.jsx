@@ -1,4 +1,5 @@
 import React from 'react'
+import Image1 from "../assets/image/Logo.jpg"
 import { useLocation, useNavigate} from 'react-router-dom'
 
 
@@ -16,8 +17,9 @@ export default function Header() {
     <div className='bg-white border-b shadow-sm sticky top-0 z-50'>
         <header className='flex justify-between items-center px-3 max-w-6xl mx-auto'>
             <div className='flex'>
-                <img src='https://t3.ftcdn.net/jpg/04/89/49/40/360_F_489494098_6xyoYL4ZQ7gJeViyPRwD419M4axAmkvO.jpg' 
-                alt='Stemii Logo' className='h-10 cursor-pointer' onClick={() => naviage("/")}/>
+                
+                <img src = {Image1} 
+                alt='Stemii Logo' className='h-10 cursor-pointer rounded-xl' onClick={() => naviage("/")}/>
                 <p className='ml-3 flex items-center'>Stemii Learning Stem</p>
             </div>
             <div>
@@ -26,6 +28,7 @@ export default function Header() {
                     <li className={`py-3 cursor-pointer text-sm font-semibold text-gray border-b-[3px] border-b-transparent ${pathMatchRoute("/course") && "text-black border-b-black "} `} onClick={() => naviage("/course")}>Course</li>
                     <li className={`py-3 cursor-pointer text-sm font-semibold text-gray border-b-[3px] border-b-transparent ${pathMatchRoute("/login") && "text-black border-b-black "} `} onClick={() => naviage("/login")}>Login</li>
                     <li className={`py-3 text-sm cursor-pointer font-semibold text-gray border-b-[3px] border-b-transparent ${pathMatchRoute("/register") && "text-black border-b-black "} `} onClick={() => naviage("/register")}>Register</li>
+                    <li className={`py-3 text-sm cursor-pointer font-semibold text-gray border-b-[3px] border-b-transparent ${pathMatchRoute("/register") && "text-black border-b-black "} `} onClick={() => naviage("/ai")}>Ai</li>
                 </ul>
             </div>
         </header>
