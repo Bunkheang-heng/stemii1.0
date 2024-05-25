@@ -1,0 +1,47 @@
+.footer {
+    background-color: #343a40; /* Dark background */
+    color: #fff; /* White text */
+    padding: 2rem 0; /* Padding on top and bottom */
+  }
+
+  
+  .footer a {
+    color: #fff; /* White links */
+    text-decoration: none; /* No underline */
+  }
+  
+  .footer a:hover {
+    color: #d4d4d4; /* Slightly lighter on hover */
+  }
+  
+  .footer .copyright {
+    display: block;
+    margin-bottom: 1rem; /* Space below the copyright text */
+  }
+  
+  .footer .social-icons a {
+    font-size: 1.5rem; /* Larger icons */
+    margin: 0 0.5rem; /* Spacing between icons */
+    transition: color 0.3s; /* Smooth color transition on hover */
+  }
+  
+  .footer .contact-info p {
+    margin: 0.5rem 0; /* Space between contact info lines */
+  }
+  
+  .footer .contact-info a {
+    color: #fff; /* White links */
+  }
+  
+  .footer .contact-info a:hover {
+    color: #d4d4d4; /* Slightly lighter on hover */
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .footer .text-md-right {
+      text-align: left; /* Left align text on smaller screens */
+      margin-top: 1rem; /* Space above text */
+    }
+  }
+  

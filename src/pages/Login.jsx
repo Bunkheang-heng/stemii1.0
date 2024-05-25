@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import Image1 from "../assets/image/Logo.jpg";
 import { RiEyeCloseLine, RiEyeFill } from "react-icons/ri";
 import { Link, useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { toast } from 'react-toastify';
-import { auth } from '../firebase.Config'; // Import auth from the firebase config file
+import { auth, db } from '../firebase.Config';
+import { doc, getDoc } from "firebase/firestore";
+import Image1 from "../assets/image/Logo.jpg";
 
 export default function SignIn() {
   const [showPassword, setShowPassword] = useState(false);
@@ -12,28 +13,41 @@ export default function SignIn() {
     email: "",
     password: "",
   });
+  const [loading, setLoading] = useState(false);
   const { email, password } = formData;
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
-  function onChange(e) {
+  const onChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,
       [e.target.id]: e.target.value,
     }));
-  }
+  };
 
-  async function onSubmit(e) {
+  const onSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      if (userCredential.user) {
-        navigate("/");
-      } 
+      const user = userCredential.user;
+      const docRef = doc(db, "users", user.uid);
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        const userData = docSnap.data();
+        if (userData.role === "admin") {
+          navigate("/admin");
+        } else {
+          navigate("/profile");
+        }
+      } else {
+        console.log("No such document!");
+      }
     } catch (error) {
       toast.error("Bad user credentials");
-      console.error(error);
+      console.error("Error signing in:", error);
     }
-  }
+    setLoading(false);
+  };
 
   return (
     <section>
@@ -44,31 +58,33 @@ export default function SignIn() {
         </div>
         <div className='w-full md:w-[67%] lg:w-[40%] lg:ml-20'>
           <form onSubmit={onSubmit}>
-            <input
-              type='email'
-              id='email'
+            <InputField
+              type="email"
+              id="email"
               value={email}
               onChange={onChange}
-              placeholder='Email' 
-              className='w-full px-4 py-2 text-xl text-gray-700 bg-white border-gray-300 rounded transition ease-in-out'
+              placeholder="Email"
+              disabled={loading}
+              required
             />
-            <div className='relative'>
-              <input
+            <div className='relative mt-6'>
+              <InputField
                 type={showPassword ? "text" : "password"}
-                id='password'
+                id="password"
                 value={password}
                 onChange={onChange}
-                placeholder='Password'
-                className='w-full px-4 py-2 text-xl text-gray-700 bg-white border-gray-300 rounded transition ease-in-out mt-6'
+                placeholder="Password"
+                disabled={loading}
+                required
               />
               {showPassword ? (
                 <RiEyeCloseLine
-                  className='absolute right-3 top-10 text-xl cursor-pointer'
+                  className='absolute right-3 top-2 text-xl cursor-pointer'
                   onClick={() => setShowPassword((prevState) => !prevState)}
                 />
               ) : (
                 <RiEyeFill
-                  className='absolute right-3 top-10 text-xl cursor-pointer'
+                  className='absolute right-3 top-2 text-xl cursor-pointer'
                   onClick={() => setShowPassword((prevState) => !prevState)}
                 />
               )}
@@ -79,10 +95,11 @@ export default function SignIn() {
               </Link>
             </p>
             <button
-              className='w-full bg-blue-500 px-7 py-3 text-white font-semibold rounded uppercase mt-4 shadow-md hover:bg-blue-700'
+              className='w-full bg-blue-500 px-7 py-3 text-white font-semibold rounded uppercase mt-4 shadow-md hover:bg-blue-700 disabled:opacity-50'
               type='submit'
+              disabled={loading}
             >
-              Login
+              {loading ? "Logging in..." : "Login"}
             </button>
             <div className='my-4 flex items-center before:border-t before:flex-1 before:border-gray-500 after:border-t after:flex-1 after:border-gray-500'>
               <p className='text-center font-semibold mx-4'>OR</p>
@@ -96,3 +113,16 @@ export default function SignIn() {
     </section>
   );
 }
+
+const InputField = ({ type, id, value, onChange, placeholder, disabled, required }) => (
+  <input
+    type={type}
+    id={id}
+    value={value}
+    onChange={onChange}
+    placeholder={placeholder}
+    className='w-full px-4 py-2 text-xl text-gray-700 bg-white border-gray-300 rounded transition ease-in-out'
+    disabled={disabled}
+    required={required}
+  />
+);
