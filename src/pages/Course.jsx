@@ -44,7 +44,6 @@ function DisplayCoursesPage() {
 
   return (
     <div className="display-courses-container">
-      <h2>Uploaded Courses</h2>
       {selectedCourse ? (
         <div className="course-details">
           <div className="course-card">

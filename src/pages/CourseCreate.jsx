@@ -8,6 +8,8 @@ function UploadCoursePage() {
   const [courseDescription, setCourseDescription] = useState('');
   const [courseImage, setCourseImage] = useState(null);
   const [courseImageUrl, setCourseImageUrl] = useState('');
+  const [tags, setTags] = useState([]);
+  const [tagInput, setTagInput] = useState('');
   const [sections, setSections] = useState([]);
   const [sectionName, setSectionName] = useState('');
   const [sectionFile, setSectionFile] = useState(null);
@@ -16,6 +18,17 @@ function UploadCoursePage() {
   const [uploading, setUploading] = useState(false);
   const [uploadError, setUploadError] = useState(null);
   const [uploadType, setUploadType] = useState('file'); // 'file' or 'url'
+
+  const handleAddTag = () => {
+    if (tagInput.trim() !== '') {
+      setTags([...tags, tagInput.trim()]);
+      setTagInput('');
+    }
+  };
+
+  const handleRemoveTag = (index) => {
+    setTags(tags.filter((_, i) => i !== index));
+  };
 
   const handleAddSection = async () => {
     if (sectionName.trim() === '') {
@@ -64,6 +77,7 @@ function UploadCoursePage() {
       let courseData = {
         name: courseName,
         description: courseDescription,
+        tags: tags,
         sections: sections,
       };
 
@@ -91,6 +105,7 @@ function UploadCoursePage() {
     setCourseDescription('');
     setCourseImage(null);
     setCourseImageUrl('');
+    setTags([]);
     setSections([]);
     resetSectionForm();
   };
@@ -127,6 +142,26 @@ function UploadCoursePage() {
           type="file"
           onChange={(e) => setCourseImage(e.target.files[0])}
         />
+      </div>
+      <div className="form-group">
+        <label>Tags:</label>
+        <div className="tags-input">
+          <input
+            type="text"
+            value={tagInput}
+            onChange={(e) => setTagInput(e.target.value)}
+            placeholder="Add a tag"
+          />
+          <button onClick={handleAddTag}>Add Tag</button>
+        </div>
+        <ul className="tag-list">
+          {tags.map((tag, index) => (
+            <li key={index}>
+              {tag}
+              <button onClick={() => handleRemoveTag(index)}>x</button>
+            </li>
+          ))}
+        </ul>
       </div>
       <div className="form-group">
         <label>Sections:</label>

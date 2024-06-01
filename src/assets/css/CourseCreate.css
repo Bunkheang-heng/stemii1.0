@@ -1,18 +1,20 @@
 /* CourseCreate.css */
+
 .upload-course-container {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 30px;
   max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  font-family: 'Arial', sans-serif;
+  margin: 20px auto;
+  font-family: 'Roboto', sans-serif;
 }
 
 .upload-course-container h2 {
-  text-align: center;
+  font-size: 28px;
   color: #333;
   margin-bottom: 20px;
+  text-align: center;
 }
 
 .form-group {
@@ -21,95 +23,104 @@
 
 .form-group label {
   display: block;
-  font-weight: bold;
-  margin-bottom: 8px;
+  font-size: 16px;
   color: #555;
+  margin-bottom: 5px;
 }
 
 .form-group input[type="text"],
 .form-group input[type="file"],
 .form-group textarea {
-  width: calc(100% - 20px);
+  width: 100%;
   padding: 10px;
-  margin-bottom: 10px;
   border: 1px solid #ddd;
-  border-radius: 4px;
-  background-color: #fff;
-  transition: border-color 0.3s;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #333;
+  margin-top: 5px;
 }
 
-.form-group input[type="text"]:focus,
-.form-group input[type="file"]:focus,
-.form-group textarea:focus {
-  border-color: #007bff;
-  outline: none;
+.form-group textarea {
+  height: 100px;
+}
+
+.section-list {
+  list-style: none;
+  padding: 0;
+}
+
+.section-list li {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 10px;
+}
+
+.section-list p {
+  margin: 0 0 5px;
 }
 
 .input-group {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+  margin-bottom: 20px;
 }
 
 .input-group input[type="text"],
 .input-group input[type="file"],
 .input-group textarea {
-  flex: 1 1 200px;
+  margin-bottom: 10px;
 }
 
-.input-group textarea {
-  height: 80px;
-  resize: vertical;
+.input-group div {
+  margin-bottom: 10px;
 }
 
-.section-list {
-  list-style-type: none;
-  padding: 0;
-}
-
-.section-list li {
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
-}
-
-.section-list li img {
-  max-width: 100px;
-  height: auto;
-  margin-top: 10px;
-  display: block;
-}
-
-.section-list li p {
-  margin: 5px 0;
+.input-group label {
+  font-size: 14px;
   color: #555;
+  margin-right: 10px;
 }
 
 .button {
-  display: inline-block;
-  padding: 10px 20px;
-  font-size: 16px;
-  font-weight: bold;
-  text-align: center;
+  background-color: #1a1a2e;
   color: #fff;
-  background-color: #007bff;
+  padding: 10px 20px;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
+  font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
 .button:hover {
-  background-color: #0056b3;
-}
-
-.button:disabled {
-  background-color: #aaa;
-  cursor: not-allowed;
+  background-color: #e94560;
 }
 
 .error-message {
-  color: #d9534f;
-  font-weight: bold;
+  color: #e94560;
+  font-size: 14px;
   margin-bottom: 20px;
   text-align: center;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .upload-course-container {
+    padding: 20px;
+  }
+
+  .upload-course-container h2 {
+    font-size: 24px;
+  }
+
+  .form-group input[type="text"],
+  .form-group input[type="file"],
+  .form-group textarea {
+    font-size: 12px;
+  }
+
+  .button {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
 }

@@ -13,6 +13,9 @@ import Admin from './pages/Admin';
 import SignUp from './pages/SignUp';
 import CourseList from './pages/Course';
 import News from './pages/News';
+import Footer from './components/Footer';
+import CourseRecommendation from './pages/SelfAccessment';
+import AboutUs from './pages/AboutUs';
 
 
 function App() {
@@ -35,8 +38,11 @@ function App() {
             <Route path="/ai" element={<Ai />} />
             <Route path="/course" element={<CourseList />} />
             <Route path="/news" element={<News />} />
+            <Route path="/selfaccessment" element={<CourseRecommendation />} />
+            <Route path='/aboutus' element={<AboutUs/>}/>
           </Routes>
         </div>
+        <Footer />
       </Router>
       <ToastContainer
         position="bottom-center"

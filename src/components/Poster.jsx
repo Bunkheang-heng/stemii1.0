@@ -16,7 +16,7 @@ const Poster = () => {
           </button>
 
           <button className="Learnmore">
-            <Link to="/universityInfo" className="text-black" style={{ textDecoration: 'none' }}>Learn more</Link>
+            <Link to="/aboutus" className="text-black" style={{ textDecoration: 'none' }}>Learn more</Link>
           </button>
         </div>
       </div>

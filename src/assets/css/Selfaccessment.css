@@ -1,0 +1,94 @@
+/* Ai.css */
+
+.ai-recommendation-container {
+    padding: 30px;
+    max-width: 700px;
+    margin: 0 auto;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.ai-recommendation-header {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.ai-question {
+    margin-bottom: 25px;
+    padding: 15px;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+}
+
+.ai-question p {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.ai-option {
+    display: block;
+    margin: 8px 0;
+    font-size: 16px;
+    color: #555;
+}
+
+.ai-option input {
+    margin-right: 10px;
+}
+
+.ai-additional-info {
+    margin: 30px 0;
+}
+
+.ai-additional-info-input {
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #fff;
+    resize: vertical;
+    min-height: 100px;
+}
+
+.ai-loading {
+    font-size: 18px;
+    color: #007bff;
+    text-align: center;
+}
+
+.ai-recommendation-response {
+    margin: 30px 0;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 18px;
+    color: #333;
+}
+
+.ai-recommendation-button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.ai-recommendation-button:hover {
+    background-color: #0056b3;
+}
