@@ -36,7 +36,7 @@ export default function Poster2() {
         <div className='news-cards-container mt-8'>
           <div className='flex justify-center'>
             <div className='news-cards grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8'>
-              {news.slice(0, 8).map((article) => (
+              {news.slice(0, 6).map((article) => (
                 <div key={article.id} className="news-card bg-white shadow-lg rounded-lg overflow-hidden transform transition duration-500 hover:scale-105">
                   {article.imageURL && <img src={article.imageURL} alt={article.title} className="w-full h-36 object-cover" />}
                   <div className="p-4">

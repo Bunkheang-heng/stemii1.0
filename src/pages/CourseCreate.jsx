@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { db, storage } from '../firebase.Config';
 import { collection, addDoc } from 'firebase/firestore';
+import { toast } from 'react-toastify';
 import '../assets/css/CourseCreate.css';
 
 function UploadCoursePage() {
@@ -90,11 +91,10 @@ function UploadCoursePage() {
       }
 
       await addDoc(collection(db, 'courses'), courseData);
-      console.log('Course uploaded successfully');
+      toast.success("upload Sucessfully");
       resetForm();
     } catch (error) {
-      setUploadError('Error uploading course. Please try again.');
-      console.error('Error uploading course:', error);
+      toast.error("Could not update the profile");
     } finally {
       setUploading(false);
     }

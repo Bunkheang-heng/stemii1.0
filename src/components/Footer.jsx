@@ -6,16 +6,16 @@ export default function Footer() {
       <div className="container mx-auto px-6">
         <div className="flex flex-wrap justify-between">
           <div className="w-full md:w-1/3 mb-6 md:mb-0">
-            <h2 className="text-2xl font-bold mb-4">Stemii Learning STEM</h2>
+            <h2 className="text-2xl font-bold mb-4 text-white">Stemii Learning STEM</h2>
             <p className="text-gray-400 leading-relaxed">
               Stemii is a platform to learn and explore Science, Technology, Engineering, and Mathematics (STEM) with a focus on coding. We provide interactive tutorials, project ideas, and engaging content to make your learning journey fun and effective.
             </p>
           </div>
           <div className="w-full md:w-1/3 mb-6 md:mb-0">
-            <h2 className="text-2xl font-bold mb-4">Quick Links</h2>
+            <h2 className="text-2xl font-bold mb-4 text-white">Quick Links</h2>
             <ul className="text-gray-400">
               <li className="mb-2">
-                <a href="/about" className="hover:text-white transition duration-300">About Us</a>
+                <a href="/aboutus" className="hover:text-white transition duration-300">About Us</a>
               </li>
               <li className="mb-2">
                 <a href="/services" className="hover:text-white transition duration-300">Services</a>
@@ -29,7 +29,7 @@ export default function Footer() {
             </ul>
           </div>
           <div className="w-full md:w-1/3 mb-6 md:mb-0">
-            <h2 className="text-2xl font-bold mb-4">Follow Us</h2>
+            <h2 className="text-2xl font-bold mb-4 text-white">Follow Us</h2>
             <div className="flex space-x-4">
               <a href="https://www.facebook.com/profile.php?id=61554863848731" className="hover:text-white transition duration-300" target="_blank" rel="noopener noreferrer">
                 <svg className="w-6 h-6 fill-current text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">

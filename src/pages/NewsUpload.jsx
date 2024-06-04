@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { db } from '../firebase.Config'; // Assuming you have Firebase configuration
+import { db } from '../firebase.Config'; 
 import { collection, addDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import "../assets/css/NewsUpload.css"
 
 function NewsUpload() {
@@ -25,9 +26,10 @@ function NewsUpload() {
         url
       });
       console.log('News added with ID: ', newNews.id);
+      toast.success("News Uploaded Sucessfully");
       navigate('/news');
     } catch (error) {
-      console.error('Error adding news: ', error);
+      toast.error("Could not upload the news");
     }
   };
 

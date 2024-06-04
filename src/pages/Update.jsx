@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { db, storage } from '../firebase.Config';
 import { collection, getDocs, doc, updateDoc, deleteDoc } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { toast } from 'react-toastify';
 
 function ManageCoursesPage() {
   const [courses, setCourses] = useState([]);
@@ -56,11 +57,10 @@ function ManageCoursesPage() {
       };
 
       await updateDoc(doc(db, 'courses', selectedCourse.id), courseData);
-      console.log('Course updated successfully');
+      toast.success("Update Sucessfully");
       setUploadError(null);
     } catch (error) {
-      setUploadError('Error updating course. Please try again.');
-      console.error('Error updating course:', error);
+      toast.error("Could not update the profile");
     } finally {
       setUploading(false);
     }

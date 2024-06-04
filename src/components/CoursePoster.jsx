@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { db } from '../firebase.Config'; // Assuming you have Firebase configuration
+import { db } from '../firebase.Config'; 
 import { collection, getDocs } from 'firebase/firestore';
 
 export default function CoursePoster() {
@@ -35,10 +35,10 @@ export default function CoursePoster() {
         <Link to="/course" className='mr-[130px] text-blue-400 text-xl'>View All</Link>
       </div>
       <div className='mt-8'>
-        <div className='flex justify-center'>
-          <div className='flex flex-wrap justify-center gap-6'>
+        <div className='flex justify-center ml-5 mr-5'>
+          <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6'>
             {courses.slice(0, 8).map((course) => (
-              <div key={course.id} className="w-60 bg-white shadow-md rounded-lg overflow-hidden transform hover:scale-105 transition duration-300">
+              <div key={course.id} className="bg-white shadow-md rounded-lg overflow-hidden transform hover:scale-105 transition duration-300">
                 {course.imageUrl && <img src={course.imageUrl} alt={course.name} className="w-full h-40 object-cover" />}
                 <div className="p-4">
                   <h3 className="text-lg font-semibold mb-2">{course.name}</h3>

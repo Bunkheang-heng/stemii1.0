@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { db } from '../firebase.Config'; // Assuming you have Firebase configuration
+import { db } from '../firebase.Config'; 
 import { collection, getDocs } from 'firebase/firestore';
 import { Link } from 'react-router-dom';
 import "../assets/css/News.css"

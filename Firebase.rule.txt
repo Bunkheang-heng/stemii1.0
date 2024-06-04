@@ -1,46 +1,28 @@
-
-    // Firestore rules
-
-
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    // Listings
-    match /listings/{listing} {
-    	allow read;
-      allow create: if request.auth != null && request.resource.data.imgUrls.size() < 7;
-    	allow delete: if resource.data.userRef == request.auth.uid;
-      allow update: if resource.data.userRef == request.auth.uid;
+
+    // News Collection
+    match /news/{document=**} {
+      allow read: if true; 
+      allow write: if request.auth != null; // Allow authenticated users to write
     }
-   
-    // Users
-    match /users/{user} {
-    	allow read;
-    	allow create;
-    	allow update: if request.auth.uid == user
+
+    // Banner Collection
+    match /Banner/{document} {
+      allow read: if true; 
     }
-  }
-}
+    
+    // Users Collection
+   match /users/{userId} {
+      allow read: if request.auth != null && request.auth.uid == userId;
+      allow write: if request.auth != null && request.auth.uid == userId;
+    }
 
-
-    // Storage rules
-
-
-rules_version = '2';
-service firebase.storage {
-  match /b/{bucket}/o {
-    match /{allPaths=**} {
-      allow read;
-      allow write: if
-      request.auth != null &&
-      request.resource.size < 2 * 1024 * 1024 && //2MB
-      request.resource.contentType.matches('image/.*')
+    // Courses Collection
+    match /courses/{course} {
+      allow read: if true; 
+      allow update, delete,create: if request.auth != null; // Allow authenticated users to update and delete
     }
   }
 }
-
-
-
-
-
-
