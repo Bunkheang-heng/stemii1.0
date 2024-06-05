@@ -17,7 +17,6 @@ import Footer from './components/Footer';
 import CourseRecommendation from './pages/SelfAccessment';
 import AboutUs from './pages/AboutUs';
 
-
 function App() {
   return (
     <div className="wrapper">
